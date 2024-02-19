@@ -75,6 +75,14 @@ jobs:
       - name: Check HTTP reachability
         run: curl -v -o /dev/null http://localhost
 
+      - name: Security scan with ZAProxy
+        uses: zaproxy/action-full-scan@v0.9.0
+        with:
+          allow_issue_writing: false
+          fail_action: true
+          rules_file_name: .zap/rules.tsv
+          target: 'http://localhost/'
+
   release:
     name: Release Application
     if: success() && github.ref == 'refs/heads/main'
