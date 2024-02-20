@@ -34,10 +34,6 @@ class TodoListController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $item = $form->getData();
 
-            if ($notes = $item->getNotes()) {
-            	$item->setNotes(shell_exec("cowsay {$notes}"));
-            }
-
             $entityManager->persist($item);
             $entityManager->flush();
 
