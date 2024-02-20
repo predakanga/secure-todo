@@ -1,0 +1,6 @@
+# CI environment override
+services:
+  php:
+    volumes:
+      - /tmp/var:/app/var
+
