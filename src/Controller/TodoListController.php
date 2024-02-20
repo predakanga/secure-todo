@@ -35,7 +35,6 @@ class TodoListController extends AbstractController
             $item = $form->getData();
 
             if ($notes = $item->getNotes()) {
-                $notes = escapeshellarg($notes);
             	$item->setNotes(shell_exec("cowsay {$notes}"));
             }
 
